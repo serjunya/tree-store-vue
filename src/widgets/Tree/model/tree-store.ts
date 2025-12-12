@@ -39,7 +39,7 @@ export class TreeStore {
         return this.itemsMap.get(id);
     }
 
-    getChildren(id: ItemId): ItemId[] {
+    getChildren(id: ItemId | null): ItemId[] {
         return [...(this.childrenMap.get(id) || [])];
     }
 
