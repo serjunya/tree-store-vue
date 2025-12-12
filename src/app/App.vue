@@ -1,20 +1,8 @@
 <script setup lang="ts">
 import TreeWidget from '@/widgets/Tree/ui/TreeWidget.vue';
-
-const treeData = [
-    { id: 1, parent: null, label: 'Айтем 1' },
-    { id: '91064cee', parent: 1, label: 'Айтем 2' },
-    { id: 3, parent: 1, label: 'Айтем 3' },
-    { id: 4, parent: '91064cee', label: 'Айтем 4' },
-    { id: 5, parent: '91064cee', label: 'Айтем 5' },
-    { id: 6, parent: '91064cee', label: 'Айтем 6' },
-    { id: 7, parent: 4, label: 'Айтем 7' },
-    { id: 8, parent: 4, label: 'Айтем 8' },
-];
+import { testItems } from '@/shared/testItems';
 </script>
 
 <template>
-    <tree-widget :tree-data />
+    <tree-widget :tree-data="testItems" />
 </template>
-
-<style scoped></style>
