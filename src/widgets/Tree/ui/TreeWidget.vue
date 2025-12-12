@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AgGridVue } from 'ag-grid-vue3';
-import type { AutoGroupColumnDef, RowNumbersOptions, ValueGetterParams } from 'ag-grid-enterprise';
+import type { RowNumbersOptions, ValueGetterParams } from 'ag-grid-enterprise';
 import type { Item } from '../types/Item';
 import { TreeStore } from '../model/tree-store';
 import { ref } from 'vue';
@@ -14,7 +14,7 @@ const treeStore = new TreeStore(props.treeData);
 const getDataPath = (item: Item) =>
     [...treeStore.getAllParents(item.id).reverse(), item.id] as string[];
 
-const autoGroupColumnDef: AutoGroupColumnDef = {
+const autoGroupColumnDef = {
     headerName: 'Категория',
     width: 300,
     valueGetter: (params: ValueGetterParams<Item>) =>
@@ -43,6 +43,17 @@ const onRowGroupOpened = () => {
         columns: ['num'],
     });
 };
+
+// выставляем наружу некоторые данные для тестирования
+const isTestMode = process.env.NODE_ENV === 'test' || import.meta.env.VITEST;
+defineExpose({
+    treeStore: isTestMode ? treeStore : undefined,
+    getDataPath: isTestMode ? getDataPath : undefined,
+    autoGroupColumnDef: isTestMode ? autoGroupColumnDef : undefined,
+    columnDefs: isTestMode ? columnDefs : undefined,
+    onRowGroupOpened: isTestMode ? onRowGroupOpened : undefined,
+    grid: isTestMode ? grid : undefined,
+});
 </script>
 
 <template>
