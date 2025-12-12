@@ -59,6 +59,12 @@ const onRowGroupOpened = () => {
 </template>
 
 <style lang="scss">
+$level-indent: 15px;
+
+@mixin font-medium {
+    font-weight: 500;
+}
+
 .ag {
     &-header-cell-resize:after {
         height: 100%;
@@ -68,20 +74,20 @@ const onRowGroupOpened = () => {
         &:not(.ag-row-level-0) {
             .ag {
                 &-cell-wrapper:not(.ag-row-group-leaf-indent) {
-                    margin-left: 15px;
+                    margin-left: $level-indent;
                 }
                 &-icon {
                     position: absolute;
-                    left: 15px;
+                    left: $level-indent;
                 }
             }
         }
         &-group {
-            font-weight: 500;
+            @include font-medium;
         }
     }
     &-column-first {
-        font-weight: 500;
+        @include font-medium;
     }
 }
 </style>
