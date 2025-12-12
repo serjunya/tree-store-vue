@@ -1,4 +1,4 @@
-import { ItemId } from "./ItemId";
+import type { ItemId } from './ItemId';
 
 export interface Item {
     id: ItemId;
