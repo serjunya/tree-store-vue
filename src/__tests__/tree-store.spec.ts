@@ -1,6 +1,5 @@
-import { TreeStore } from '@/widgets/Tree/model/tree-store';
+import { type Item, TreeStore } from '@/widgets/Tree';
 import { beforeEach, describe, expect, it } from 'vitest';
-import type { Item } from '@/widgets/Tree/types/Item';
 
 describe('tree-store', () => {
     let mockItems: Item[];

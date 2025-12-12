@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi, type Mock } from 'vitest';
 import { mount } from '@vue/test-utils';
-import TreeWidget from '@/widgets/Tree/ui/TreeWidget.vue';
-import { TreeStore } from '@/widgets/Tree/model/tree-store';
-import type { Item } from '@/widgets/Tree/types/Item';
+import { type Item, TreeWidget, TreeStore } from '@/widgets/Tree';
 
 // Мокаем TreeStore и ag-grid-vue3, так как они тестируются отдельно
 vi.mock('@/widgets/Tree/model/tree-store', () => {
@@ -31,23 +29,23 @@ vi.mock('@/widgets/Tree/model/tree-store', () => {
 });
 
 vi.mock('ag-grid-vue3', () => {
-  const AgGridVue = {
-    name: 'AgGridVue',
-    template: '<div class="ag-grid-mock" data-testid="ag-grid-mock"></div>',
-    props: [
-      'treeData',
-      'rowData',
-      'getDataPath',
-      'columnDefs',
-      'autoGroupColumnDef',
-      'onRowGroupOpened',
-      'style'
-    ],
-    setup() {
-      return {};
-    },
-  };
-  return { AgGridVue };
+    const AgGridVue = {
+        name: 'AgGridVue',
+        template: '<div class="ag-grid-mock" data-testid="ag-grid-mock"></div>',
+        props: [
+            'treeData',
+            'rowData',
+            'getDataPath',
+            'columnDefs',
+            'autoGroupColumnDef',
+            'onRowGroupOpened',
+            'style',
+        ],
+        setup() {
+            return {};
+        },
+    };
+    return { AgGridVue };
 });
 
 const mockTreeData: Item[] = [
@@ -110,7 +108,6 @@ describe('TreeWidget.vue', () => {
             });
 
             const vm = wrapper.vm;
-
 
             const item: Item = { id: '2', parent: '1', label: 'Child 1.1' };
             const result = vm.getDataPath!(item);

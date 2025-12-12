@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TreeWidget from '@/widgets/Tree/ui/TreeWidget.vue';
+import { TreeWidget } from '@/widgets/Tree';
 import { testItems } from '@/shared/testItems';
 </script>
 
