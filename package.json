@@ -2,7 +2,37 @@
     "name": "tree-store-vue",
     "main": "dist-electron/main.js",
     "version": "0.0.0",
+    "author": "Сергей Головатюков <2003gsa20152@gmail.com>",
     "private": true,
+    "build": {
+        "appId": "com.serjunya.myapp",
+        "productName": "AG Grid Tree Store",
+        "copyright": "Copyright © 2026 ${author}",
+        "directories": {
+            "output": "dist_electron"
+        },
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "icon": "public/tree.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "shortcutName": "AG Grid Tree Store",
+            "createDesktopShortcut": true
+        },
+        "files": [
+            "dist/**/*",
+            "dist-electron/**/*"
+        ]
+    },
     "engines": {
         "node": "^20.19.0 || >=22.12.0"
     },
